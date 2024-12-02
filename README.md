@@ -22,6 +22,15 @@ python main.py --algo mcnn_bc --env_name pen-human-v1 --device 0 --ms online --l
 
 Replace `pen-human-v1` with any of the other tasks such as (hammer-human-v1, pen-human-v1, relocate-human-v1, door-human-v1, hammer-expert-v1, pen-expert-v1, relocate-expert-v1, door-expert-v1, carla-lane-v0).
 
+## Detailed instructions for creating datasets
+### Collect data
+Download d4rl datasets, resnet models for CARLA embeddings, and franka kitchen dataset:
+```bash
+python data/download_d4rl_datasets.py
+python data/download_nocrash_models.py
+cd diffusion_policy && bash download_kitchen_data.sh && cd ../
+```
+
 ### Create Memories with Neural Gas
 Create memories:
 ```bash
