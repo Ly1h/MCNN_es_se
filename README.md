@@ -1,7 +1,5 @@
 # MCNN_es_se
 
-## How to run
-
 ## Setup
 Create env, install pytorch, install requirements.
 ```bash
@@ -17,9 +15,11 @@ Install this package
 pip install -e .
 ```
 ## Train and evaluate
+```bash
 cd diffusion_BC
 python main.py --algo mcnn_bc --env_name pen-human-v1 --device 0 --ms online --lr_decay --num_memories_frac 0.1 --Lipz 1.0 --lamda 1.0
 ```
+
 Replace `pen-human-v1` with any of the other tasks such as (hammer-human-v1, pen-human-v1, relocate-human-v1, door-human-v1, hammer-expert-v1, pen-expert-v1, relocate-expert-v1, door-expert-v1, carla-lane-v0).
 
 ### Create Memories with Neural Gas
@@ -27,6 +27,7 @@ Create memories:
 ```bash
 python mems_obs/create_gng_incrementally.py --name pen-human-v1 --num_memories_frac 0.1
 ```
+
 Replace name with any of the other tasks and num_memories_frac with any value less than 1. In the paper, we use 0.025, 0.05, and 0.1 for num_memories_frac. (Note: simply use `--name kitchen` for the franka kitchen task)
 
 Update (downloaded) datasets by adding memory and memory_target to every transition:
